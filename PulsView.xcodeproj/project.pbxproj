@@ -30,6 +30,11 @@
 		38512C791F5F47A000E123A5 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38512C781F5F47A000E123A5 /* NotificationHelper.swift */; };
 		38512C7A1F5F493F00E123A5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38512C6A1F5F2EA100E123A5 /* Constants.swift */; };
 		38512C7C1F5F4C8200E123A5 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38512C7B1F5F4C8200E123A5 /* DataController.swift */; };
+		38512C7E1F5FD27C00E123A5 /* PulsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38512C7D1F5FD27C00E123A5 /* PulsGenerator.swift */; };
+		38DAD2621F685E3A00E722F8 /* PulsViewInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DAD2611F685E3A00E722F8 /* PulsViewInterfaceController.swift */; };
+		38DAD2641F68636600E722F8 /* HealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DAD2631F68636600E722F8 /* HealthKitHelper.swift */; };
+		38DAD2661F68801700E722F8 /* 28007129.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 38DAD2651F68801700E722F8 /* 28007129.mp3 */; };
+		38DAD2671F68801700E722F8 /* 28007129.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 38DAD2651F68801700E722F8 /* 28007129.mp3 */; };
 		38DB7BBA1F31D43300A04A40 /* UIExtansions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB7BB91F31D43300A04A40 /* UIExtansions.swift */; };
 		38DB7BBC1F31D44300A04A40 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB7BBB1F31D44300A04A40 /* StartViewController.swift */; };
 		38DB7BBE1F31D47300A04A40 /* HealthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB7BBD1F31D47300A04A40 /* HealthController.swift */; };
@@ -114,6 +119,10 @@
 		38512C761F5F450D00E123A5 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		38512C781F5F47A000E123A5 /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		38512C7B1F5F4C8200E123A5 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		38512C7D1F5FD27C00E123A5 /* PulsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsGenerator.swift; sourceTree = "<group>"; };
+		38DAD2611F685E3A00E722F8 /* PulsViewInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsViewInterfaceController.swift; sourceTree = "<group>"; };
+		38DAD2631F68636600E722F8 /* HealthKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitHelper.swift; sourceTree = "<group>"; };
+		38DAD2651F68801700E722F8 /* 28007129.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 28007129.mp3; sourceTree = "<group>"; };
 		38DB7BB91F31D43300A04A40 /* UIExtansions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtansions.swift; sourceTree = "<group>"; };
 		38DB7BBB1F31D44300A04A40 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		38DB7BBD1F31D47300A04A40 /* HealthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthController.swift; sourceTree = "<group>"; };
@@ -182,6 +191,7 @@
 		381FE6181F2F9DB100C6248B /* PulsView WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
+				38DAD2651F68801700E722F8 /* 28007129.mp3 */,
 				381FE68B1F30FEFC00C6248B /* PulsView WatchKit App.entitlements */,
 				381FE6191F2F9DB100C6248B /* Interface.storyboard */,
 				381FE61C1F2F9DB100C6248B /* Assets.xcassets */,
@@ -273,6 +283,8 @@
 			isa = PBXGroup;
 			children = (
 				38512C781F5F47A000E123A5 /* NotificationHelper.swift */,
+				38512C7D1F5FD27C00E123A5 /* PulsGenerator.swift */,
+				38DAD2631F68636600E722F8 /* HealthKitHelper.swift */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -281,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				38DB7BD31F31F8D300A04A40 /* StartInterfaceController.swift */,
+				38DAD2611F685E3A00E722F8 /* PulsViewInterfaceController.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -433,6 +446,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38DAD2661F68801700E722F8 /* 28007129.mp3 in Resources */,
 				381FE61D1F2F9DB100C6248B /* Assets.xcassets in Resources */,
 				381FE61B1F2F9DB100C6248B /* Interface.storyboard in Resources */,
 			);
@@ -443,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				381FE6311F2F9DB100C6248B /* Assets.xcassets in Resources */,
+				38DAD2671F68801700E722F8 /* 28007129.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +492,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				381FE62F1F2F9DB100C6248B /* NotificationController.swift in Sources */,
+				38DAD2641F68636600E722F8 /* HealthKitHelper.swift in Sources */,
 				381FE62D1F2F9DB100C6248B /* ExtensionDelegate.swift in Sources */,
+				38DAD2621F685E3A00E722F8 /* PulsViewInterfaceController.swift in Sources */,
+				38512C7E1F5FD27C00E123A5 /* PulsGenerator.swift in Sources */,
 				38DB7BD41F31F8D300A04A40 /* StartInterfaceController.swift in Sources */,
 				381FE62B1F2F9DB100C6248B /* InterfaceController.swift in Sources */,
 				38512C791F5F47A000E123A5 /* NotificationHelper.swift in Sources */,

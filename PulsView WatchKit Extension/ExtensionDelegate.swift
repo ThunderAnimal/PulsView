@@ -12,6 +12,10 @@ import UserNotifications
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate, UNUserNotificationCenterDelegate {
 
+    lazy var notificationCenter: NotificationCenter = {
+        return NotificationCenter.default
+    }()
+    
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
         setupWatchConnectivity()
@@ -75,6 +79,12 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate, UNUse
         
         ///Create Categories with actions
         notificationHelper.initSetUpNotifications()
+        
+        notificationCenter.addObserver(forName: NSNotification.Name(Constants.WatchNotification.newPulsData.key()), object: nil, queue: nil) { (notification) in
+            if let puls = notification.userInfo?[Constants.Puls.value.key()] as? Int{
+                print(puls)
+            }
+        }
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

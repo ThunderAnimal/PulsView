@@ -64,6 +64,16 @@ public enum Constants{
         }
     }
     
+    public enum Puls: Int {
+        case value
+        public func key() -> String{
+            switch self {
+            case .value:
+                return "PULS_DATA"
+            }
+        }
+    }
+    
     public enum NotificationCategory: Int{
         case happytrack_needed, general
         public func indentifier() -> String{
@@ -76,12 +86,14 @@ public enum Constants{
     }
     
     public enum WatchNotification: Int {
-        case contextReceived,  dataAdded
+        case contextReceived, newPulsData,  dataAdded
         
         public func key() -> String{
             switch self {
             case .contextReceived:
                 return "NotificationContextReceived"
+            case .newPulsData:
+                return "NotificationNewPulsData"
             default: return ""
             }
         }

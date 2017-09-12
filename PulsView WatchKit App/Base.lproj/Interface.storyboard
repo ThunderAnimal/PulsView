@@ -12,25 +12,72 @@
         <!--PulsView-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller title="PulsView" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="PulsView_WatchKit_App" customModuleProvider="target">
+                <controller title="PulsView" id="AgC-eL-Hgc" customClass="StartInterfaceController" customModule="PulsView_WatchKit_Extension">
                     <items>
                         <label width="134" alignment="left" text="Hey, " id="jwn-wK-7S8"/>
-                        <label width="1" alignment="left" text="versuche nun auf der folgenden Seite das Herz durch deinen Puls zu verändern" numberOfLines="8" id="vde-mg-avc"/>
-                        <imageView width="67" height="65" alignment="center" image="swipe-left" id="H25-6h-AsM"/>
+                        <separator alignment="left" id="RYZ-bF-NdC"/>
+                        <button width="1" alignment="left" title="Normaler Puls" id="ham-oI-RvX">
+                            <connections>
+                                <action selector="clickButtonNormal" destination="AgC-eL-Hgc" id="7TX-c0-1gF"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Releax Puls" id="qlw-ju-1Eh">
+                            <connections>
+                                <action selector="clickButtonReleax" destination="AgC-eL-Hgc" id="V5F-JA-l9U"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Sport Puls" id="70r-57-siy">
+                            <connections>
+                                <action selector="clickButtonSport" destination="AgC-eL-Hgc" id="UfY-Pu-KCE"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Realer Puls" id="hmK-f9-ewd">
+                            <connections>
+                                <action selector="clickButtonMeasurePuls" destination="AgC-eL-Hgc" id="2e8-YS-cAH"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
-                        <segue destination="6O6-5X-a3S" kind="relationship" relationship="nextPage" id="TCz-aT-mEm"/>
+                        <outlet property="labelWelcome" destination="jwn-wK-7S8" id="0FL-4S-Mwb"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
-        <!--Interface Controller-->
-        <scene sceneID="h5C-kW-dwx">
+        <!--PulsView-->
+        <scene sceneID="sJF-yq-KNc">
             <objects>
-                <controller id="6O6-5X-a3S"/>
+                <controller identifier="PulsView" id="aw2-vN-XQZ" customClass="PulsViewInterfaceController" customModule="PulsView_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="Mvl-pf-8e3">
+                            <items>
+                                <imageView width="41" height="33" alignment="left" image="batch_heart-0" id="Wgx-Ru-tX7"/>
+                                <label alignment="left" verticalAlignment="center" text="--" textAlignment="right" id="3Ph-tg-rVw">
+                                    <fontDescription key="font" type="system" weight="semibold" pointSize="21"/>
+                                </label>
+                            </items>
+                        </group>
+                        <separator alignment="left" id="Tny-C8-Tjk"/>
+                        <label alignment="left" text="Hallo das ist ein Langer Text, ich hoffe du kannst ihn lesen. Wenn nicht dann sollte der Größer sein..." numberOfLines="8" id="9RH-oN-dvJ">
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                        </label>
+                        <button width="0.5" height="25" alignment="center" title="OK!" id="YY9-Uj-DBP">
+                            <color key="titleColor" red="0.21960784310000001" green="0.74509803919999995" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.21867917810000001" green="0.74668861040000001" blue="0.21452989219999999" alpha="0.39412992294520549" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="btnClickOk" destination="aw2-vN-XQZ" id="a6G-3c-ATy"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="btnOk" destination="YY9-Uj-DBP" id="H2u-4y-8i4"/>
+                        <outlet property="imageHeart" destination="Wgx-Ru-tX7" id="8aA-GE-7fJ"/>
+                        <outlet property="labelPuls" destination="3Ph-tg-rVw" id="S3R-YH-DTf"/>
+                        <outlet property="textLang" destination="9RH-oN-dvJ" id="4MR-mA-WE6"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="484" y="345"/>
+            <point key="canvasLocation" x="553" y="350"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -39,21 +86,13 @@
                     <items>
                         <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" identifier="GENERAL" id="JfB-70-Muf"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
                     </connections>
                 </notificationController>
             </objects>
             <point key="canvasLocation" x="220" y="643"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
-            <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="PulsView_WatchKit_App" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="643"/>
         </scene>
     </scenes>
     <color key="tintColor" red="1" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
