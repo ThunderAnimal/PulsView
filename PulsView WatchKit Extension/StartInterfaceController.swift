@@ -56,6 +56,7 @@ class StartInterfaceController: WKInterfaceController {
     }
     
     private func showPulsView(){
+        SendDataHelper.init().sendMeasureState(measureState: true)
         self.presentController(withName: "PulsView", context: nil)
     }
     

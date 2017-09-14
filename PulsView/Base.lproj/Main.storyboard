@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -107,7 +108,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JcF-8d-YU2">
-                                <rect key="frame" x="97" y="318" width="180" height="30"/>
+                                <rect key="frame" x="97.5" y="318" width="180" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="KEj-c7-1eN"/>
                                     <constraint firstAttribute="height" constant="30" id="yfx-HO-B6d"/>
@@ -224,9 +225,50 @@
                     <view key="view" contentMode="scaleToFill" id="69e-On-Km8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart-0" translatesAutoresizingMaskIntoConstraints="NO" id="Fzl-sO-yK9">
+                                <rect key="frame" x="66" y="109" width="243" height="194"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Fzl-sO-yK9" secondAttribute="height" multiplier="5:4" id="sgS-bp-vae"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gP-lA-TaJ">
+                                <rect key="frame" x="127" y="389" width="120" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="8It-Hx-P2e"/>
+                                    <constraint firstAttribute="height" constant="50" id="yNG-sW-b3v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
+                                <color key="textColor" red="1" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXl-pd-hnd">
+                                <rect key="frame" x="166" y="358" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="X7k-vh-5jO"/>
+                                    <constraint firstAttribute="height" constant="21" id="aWa-FI-ndM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6gP-lA-TaJ" firstAttribute="centerX" secondItem="69e-On-Km8" secondAttribute="centerX" id="04O-AW-DK3"/>
+                            <constraint firstItem="tXl-pd-hnd" firstAttribute="centerX" secondItem="69e-On-Km8" secondAttribute="centerX" id="1xh-JX-Hl6"/>
+                            <constraint firstItem="Fzl-sO-yK9" firstAttribute="leading" secondItem="69e-On-Km8" secondAttribute="leadingMargin" constant="50" id="358-rt-lHt"/>
+                            <constraint firstItem="Fzl-sO-yK9" firstAttribute="top" secondItem="E0i-jO-evP" secondAttribute="bottom" constant="45" id="9k4-br-LaB"/>
+                            <constraint firstItem="tXl-pd-hnd" firstAttribute="top" secondItem="Fzl-sO-yK9" secondAttribute="bottom" constant="55" id="D9h-iN-bfk"/>
+                            <constraint firstItem="Fzl-sO-yK9" firstAttribute="centerX" secondItem="69e-On-Km8" secondAttribute="centerX" id="ZyO-RP-lKY"/>
+                            <constraint firstItem="6gP-lA-TaJ" firstAttribute="top" secondItem="tXl-pd-hnd" secondAttribute="bottom" constant="10" id="aEw-25-Cam"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PulsView" id="6qh-mB-lS3"/>
+                    <connections>
+                        <outlet property="imageHeart" destination="Fzl-sO-yK9" id="wHr-pw-ZYE"/>
+                        <outlet property="labelPuls" destination="6gP-lA-TaJ" id="9ON-Fc-y4S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gb-QC-qOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -378,6 +420,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart-0" width="357" height="276"/>
         <image name="icon" width="512" height="512"/>
         <image name="information" width="30" height="30"/>
         <image name="information_filled" width="30" height="30"/>

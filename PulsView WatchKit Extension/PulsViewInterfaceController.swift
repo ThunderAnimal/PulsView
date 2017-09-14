@@ -26,7 +26,7 @@ class PulsViewInterfaceController: WKInterfaceController {
         
         // Configure interface objects here.
         
-        self.imageHeart.setImageNamed("batch_heart-");
+        self.imageHeart.setImageNamed("heart-");
         
         notificationCenter.addObserver(forName: NSNotification.Name(Constants.WatchNotification.newPulsData.key()), object: nil, queue: nil) { (notification) in
             if let puls = notification.userInfo?[Constants.Puls.value.key()] as? Int{
@@ -40,7 +40,7 @@ class PulsViewInterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        self.imageHeart.startAnimatingWithImages(in: NSMakeRange(0, 12), duration: 1, repeatCount: -1);
+        self.imageHeart.startAnimatingWithImages(in: NSMakeRange(0, 12), duration: 1.5, repeatCount: -1);
     }
     
     override func didDeactivate() {
@@ -55,6 +55,8 @@ class PulsViewInterfaceController: WKInterfaceController {
         
         PulsGenerator.shared.stopGenratePulsData()
         HealthKitHelper.shared.stopMeasurePuls()
+        
+        SendDataHelper().sendMeasureState(measureState: false)
     }
     @IBAction func btnClickOk() {
         self.dismiss()

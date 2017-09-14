@@ -47,11 +47,12 @@ class PulsGenerator{
         self.stopGenratePulsData() // Sicher gehen das vorherige Timer gestoppt sind
         self.currentPulsItem = 0
         
-        let handletick = DispatchWorkItem { 
+        let handletick = DispatchWorkItem {
             if(self.currentPulsItem >= pulsList.count){
                 self.currentPulsItem = 0
             }
             NotificationCenter.default.post(name: NSNotification.Name(Constants.WatchNotification.newPulsData.key()), object: nil, userInfo: [Constants.Puls.value.key(): pulsList[self.currentPulsItem]])
+            SendDataHelper.init().sendPulsData(puls: pulsList[self.currentPulsItem])
             
             self.currentPulsItem = self.currentPulsItem + 1
         }

@@ -14,6 +14,8 @@ class AppComponent{
     private var notificationController: NotificationController?
     private var healthController: HealthController?
     private var dataController: DataController?
+    private var pulsDataHandler: PulsDataHandler?
+    
     
     private init(){}
     
@@ -44,5 +46,12 @@ class AppComponent{
             dataController = DataController()
         }
         return dataController!
+    }
+    
+    public func getPulsDataHandle() -> PulsDataHandler{
+        if(pulsDataHandler == nil){
+            pulsDataHandler = PulsDataHandler()
+        }
+        return pulsDataHandler!
     }
 }

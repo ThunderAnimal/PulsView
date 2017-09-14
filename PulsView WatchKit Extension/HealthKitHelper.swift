@@ -100,6 +100,8 @@ class HealthKitHelper: NSObject, HKWorkoutSessionDelegate{
             
             //Puls zurück liefern
             NotificationCenter.default.post(name: NSNotification.Name(Constants.WatchNotification.newPulsData.key()), object: nil, userInfo: [Constants.Puls.value.key(): value])
+            
+            SendDataHelper.init().sendPulsData(puls: value)
         }
     }
     

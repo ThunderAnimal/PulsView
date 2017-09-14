@@ -65,11 +65,13 @@ public enum Constants{
     }
     
     public enum Puls: Int {
-        case value
+        case value, isMeasure
         public func key() -> String{
             switch self {
             case .value:
                 return "PULS_DATA"
+            case .isMeasure:
+                return "IS_MEASURE"
             }
         }
     }
@@ -86,7 +88,7 @@ public enum Constants{
     }
     
     public enum WatchNotification: Int {
-        case contextReceived, newPulsData,  dataAdded
+        case contextReceived, newPulsData,  dataAdded, changeMeasureState
         
         public func key() -> String{
             switch self {
@@ -94,6 +96,9 @@ public enum Constants{
                 return "NotificationContextReceived"
             case .newPulsData:
                 return "NotificationNewPulsData"
+            case .changeMeasureState:
+                return "NotificationMeasureChange"
+                
             default: return ""
             }
         }

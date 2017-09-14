@@ -51,10 +51,10 @@
                     <items>
                         <group width="1" alignment="left" id="Mvl-pf-8e3">
                             <items>
-                                <imageView width="41" height="33" alignment="left" image="batch_heart-0" id="Wgx-Ru-tX7"/>
-                                <label alignment="left" verticalAlignment="center" text="--" textAlignment="right" id="3Ph-tg-rVw">
+                                <label alignment="right" verticalAlignment="center" text="--" textAlignment="right" id="3Ph-tg-rVw">
                                     <fontDescription key="font" type="system" weight="semibold" pointSize="21"/>
                                 </label>
+                                <imageView width="41" height="33" alignment="right" image="heart-0" id="Wgx-Ru-tX7"/>
                             </items>
                         </group>
                         <separator alignment="left" id="Tny-C8-Tjk"/>
