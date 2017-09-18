@@ -11,6 +11,7 @@ import RealmSwift
 import Realm
 
 class PulsDataMeasureEntity:Object {
+    dynamic var id = PulsDataMeasureEntity.generateId(date: Date())
     dynamic var date = Date()
     dynamic var dateStr = ""
     dynamic var timeStr = ""
@@ -20,10 +21,21 @@ class PulsDataMeasureEntity:Object {
     convenience init(date:Date){
         self.init()
         
+        self.id = PulsDataMeasureEntity.generateId(date: date)
         self.date = date
         self.dateStr = getFormatDate(date: date)
         self.timeStr = getFormatTime(date: date)
         
+    }
+    
+    class func generateId(date: Date) -> String {
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "yyyy-MM-dd_H:m:ss.SSSS"
+        return dateFormat.string(from: date)
+    }
+    
+    override open class func primaryKey() -> String {
+        return "id"
     }
     
     private func getFormatTime(date:Date)-> String{
@@ -54,5 +66,20 @@ class PulsDataMeasureEntity:Object {
     func addPulsData(date:Date, value:Int){
         let puls = PulsDataEntity(date: date, value: value)
         self.pulsData.append(puls)
+    }
+    
+    func getMaxPuls()->Int{
+        if let max = (pulsData.map{ $0.value }.max()){
+            return max
+        }else{
+            return 0
+        }
+    }
+    func getMinPuls()->Int{
+        if let min = ( pulsData.map{ $0.value }.min()){
+            return min
+        }else{
+            return 0
+        }
     }
 }

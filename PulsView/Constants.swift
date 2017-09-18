@@ -65,13 +65,17 @@ public enum Constants{
     }
     
     public enum Puls: Int {
-        case value, isMeasure
+        case value, isMeasure, measureStartTime, pulsTime
         public func key() -> String{
             switch self {
             case .value:
                 return "PULS_DATA"
             case .isMeasure:
                 return "IS_MEASURE"
+            case .measureStartTime:
+                return "MEASURE:START_TIME"
+            case .pulsTime:
+                return "PULS_TIME"
             }
         }
     }

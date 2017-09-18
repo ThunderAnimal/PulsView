@@ -51,8 +51,7 @@ class PulsGenerator{
             if(self.currentPulsItem >= pulsList.count){
                 self.currentPulsItem = 0
             }
-            NotificationCenter.default.post(name: NSNotification.Name(Constants.WatchNotification.newPulsData.key()), object: nil, userInfo: [Constants.Puls.value.key(): pulsList[self.currentPulsItem]])
-            SendDataHelper.init().sendPulsData(puls: pulsList[self.currentPulsItem])
+            PulsMeasureHandler.shared.newPulsData(puls: pulsList[self.currentPulsItem])
             
             self.currentPulsItem = self.currentPulsItem + 1
         }

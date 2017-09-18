@@ -56,7 +56,7 @@ class PulsViewInterfaceController: WKInterfaceController {
         PulsGenerator.shared.stopGenratePulsData()
         HealthKitHelper.shared.stopMeasurePuls()
         
-        SendDataHelper().sendMeasureState(measureState: false)
+        PulsMeasureHandler.shared.stopMeasure()
     }
     @IBAction func btnClickOk() {
         self.dismiss()

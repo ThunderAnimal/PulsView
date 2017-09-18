@@ -45,13 +45,12 @@
 		38DB7BD81F31FBDD00A04A40 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DB7BD71F31FBDD00A04A40 /* HealthKit.framework */; };
 		38DB7BDA1F31FBF200A04A40 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DB7BD91F31FBF200A04A40 /* HealthKit.framework */; };
 		38DF6C2C1F6B1362001F1AB3 /* SendDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF6C2B1F6B1362001F1AB3 /* SendDataHelper.swift */; };
-		38DF6C3D1F6B2649001F1AB3 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DF6C3B1F6B2649001F1AB3 /* Realm.framework */; };
-		38DF6C3E1F6B2649001F1AB3 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38DF6C3B1F6B2649001F1AB3 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		38DF6C3F1F6B2649001F1AB3 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DF6C3C1F6B2649001F1AB3 /* RealmSwift.framework */; };
-		38DF6C401F6B2649001F1AB3 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38DF6C3C1F6B2649001F1AB3 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38DF6C421F6B269B001F1AB3 /* PulsDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF6C411F6B269B001F1AB3 /* PulsDataEntity.swift */; };
 		38DF6C441F6B26BF001F1AB3 /* PulsDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF6C431F6B26BF001F1AB3 /* PulsDataHandler.swift */; };
 		38DF6C461F6B28B1001F1AB3 /* PulsDataMeasureEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF6C451F6B28B1001F1AB3 /* PulsDataMeasureEntity.swift */; };
+		38DF6C481F6F11F4001F1AB3 /* HistorieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF6C471F6F11F4001F1AB3 /* HistorieViewController.swift */; };
+		38DF6C4A1F6F1403001F1AB3 /* HistorieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF6C491F6F1403001F1AB3 /* HistorieDetailViewController.swift */; };
+		38DF6C4C1F6F161B001F1AB3 /* PulsMeasureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF6C4B1F6F161B001F1AB3 /* PulsMeasureHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,18 +91,6 @@
 				381FE6151F2F9DB100C6248B /* PulsView WatchKit App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		38DF6C381F6B2413001F1AB3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				38DF6C401F6B2649001F1AB3 /* RealmSwift.framework in Embed Frameworks */,
-				38DF6C3E1F6B2649001F1AB3 /* Realm.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -153,11 +140,12 @@
 		38DB7BD71F31FBDD00A04A40 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		38DB7BD91F31FBF200A04A40 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		38DF6C2B1F6B1362001F1AB3 /* SendDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDataHelper.swift; sourceTree = "<group>"; };
-		38DF6C3B1F6B2649001F1AB3 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		38DF6C3C1F6B2649001F1AB3 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		38DF6C411F6B269B001F1AB3 /* PulsDataEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsDataEntity.swift; sourceTree = "<group>"; };
 		38DF6C431F6B26BF001F1AB3 /* PulsDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsDataHandler.swift; sourceTree = "<group>"; };
 		38DF6C451F6B28B1001F1AB3 /* PulsDataMeasureEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsDataMeasureEntity.swift; sourceTree = "<group>"; };
+		38DF6C471F6F11F4001F1AB3 /* HistorieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorieViewController.swift; sourceTree = "<group>"; };
+		38DF6C491F6F1403001F1AB3 /* HistorieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorieDetailViewController.swift; sourceTree = "<group>"; };
+		38DF6C4B1F6F161B001F1AB3 /* PulsMeasureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsMeasureHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,9 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38DF6C3D1F6B2649001F1AB3 /* Realm.framework in Frameworks */,
 				38DB7BD81F31FBDD00A04A40 /* HealthKit.framework in Frameworks */,
-				38DF6C3F1F6B2649001F1AB3 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,8 +171,6 @@
 		381FE5F91F2F9DB100C6248B = {
 			isa = PBXGroup;
 			children = (
-				38DF6C3B1F6B2649001F1AB3 /* Realm.framework */,
-				38DF6C3C1F6B2649001F1AB3 /* RealmSwift.framework */,
 				381FE6041F2F9DB100C6248B /* PulsView */,
 				381FE6181F2F9DB100C6248B /* PulsView WatchKit App */,
 				381FE6271F2F9DB100C6248B /* PulsView WatchKit Extension */,
@@ -264,6 +248,8 @@
 				38512C701F5F301700E123A5 /* PulsViewController.swift */,
 				38512C721F5F37B300E123A5 /* DiagrammvViewController.swift */,
 				38512C741F5F383B00E123A5 /* TabBarViewController.swift */,
+				38DF6C471F6F11F4001F1AB3 /* HistorieViewController.swift */,
+				38DF6C491F6F1403001F1AB3 /* HistorieDetailViewController.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -318,6 +304,7 @@
 				38512C7D1F5FD27C00E123A5 /* PulsGenerator.swift */,
 				38DAD2631F68636600E722F8 /* HealthKitHelper.swift */,
 				38DF6C2B1F6B1362001F1AB3 /* SendDataHelper.swift */,
+				38DF6C4B1F6F161B001F1AB3 /* PulsMeasureHandler.swift */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -360,8 +347,6 @@
 				381FE5FF1F2F9DB100C6248B /* Frameworks */,
 				381FE6001F2F9DB100C6248B /* Resources */,
 				381FE63C1F2F9DB100C6248B /* Embed Watch Content */,
-				38DF6C381F6B2413001F1AB3 /* Embed Frameworks */,
-				38DF6C391F6B2480001F1AB3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -507,28 +492,13 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		38DF6C391F6B2480001F1AB3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"  ";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		381FE5FE1F2F9DB100C6248B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				38512C771F5F450E00E123A5 /* NotificationController.swift in Sources */,
+				38DF6C4A1F6F1403001F1AB3 /* HistorieDetailViewController.swift in Sources */,
 				38DB7BBC1F31D44300A04A40 /* StartViewController.swift in Sources */,
 				38512C6F1F5F300700E123A5 /* SettingViewController.swift in Sources */,
 				38DB7BBE1F31D47300A04A40 /* HealthController.swift in Sources */,
@@ -537,6 +507,7 @@
 				38DF6C441F6B26BF001F1AB3 /* PulsDataHandler.swift in Sources */,
 				38512C751F5F383B00E123A5 /* TabBarViewController.swift in Sources */,
 				381FE6061F2F9DB100C6248B /* AppDelegate.swift in Sources */,
+				38DF6C481F6F11F4001F1AB3 /* HistorieViewController.swift in Sources */,
 				38512C6D1F5F2FE400E123A5 /* OnBoardViewController.swift in Sources */,
 				38DB7BC41F31D4A300A04A40 /* convCGValues.swift in Sources */,
 				381FE6981F3101F400C6248B /* AppColor.swift in Sources */,
@@ -564,6 +535,7 @@
 				381FE62B1F2F9DB100C6248B /* InterfaceController.swift in Sources */,
 				38512C791F5F47A000E123A5 /* NotificationHelper.swift in Sources */,
 				38512C7A1F5F493F00E123A5 /* Constants.swift in Sources */,
+				38DF6C4C1F6F161B001F1AB3 /* PulsMeasureHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

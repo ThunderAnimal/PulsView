@@ -74,6 +74,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
      Receive Data
      */
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        if let measureStartTime = userInfo[Constants.Puls.measureStartTime.key()] as? Date,
+            let pulsTime = userInfo[Constants.Puls.pulsTime.key()] as? Date,
+            let pulsVvalue = userInfo[Constants.Puls.value.key()] as? Int{
+            
+            AppComponent.instance.getPulsDataHandle().addPuls(dateMeasure: measureStartTime, datePuls: pulsTime, value: pulsVvalue)
+        }
     }
     
     /**
@@ -87,14 +93,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
      */
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        print("GET CONTEXT")
         
         if let isMeasure = applicationContext[Constants.Puls.isMeasure.key()] as? Bool{
             let userDefaults  = UserDefaults()
             userDefaults.set(isMeasure, forKey: Constants.Puls.isMeasure.key())
             userDefaults.synchronize()
-            
-            print("IS MEASURE")
             
             NotificationCenter.default.post(name: NSNotification.Name(Constants.WatchNotification.changeMeasureState.key()), object: nil)
         }
