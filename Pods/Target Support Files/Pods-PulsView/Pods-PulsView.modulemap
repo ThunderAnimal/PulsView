@@ -1,0 +1,6 @@
+framework module Pods_PulsView {
+  umbrella header "Pods-PulsView-umbrella.h"
+
+  export *
+  module * { export * }
+}
