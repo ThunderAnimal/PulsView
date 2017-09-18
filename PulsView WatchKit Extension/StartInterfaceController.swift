@@ -69,10 +69,7 @@ class StartInterfaceController: WKInterfaceController {
     
     private func updateGUI(){
         if let name = UserDefaults.standard.string(forKey: Constants.Person.name.key()){
-            if(name != nil){
-                labelWelcome.setText("Hey " + name + ",")
-            }
-            
+            labelWelcome.setText("Hey " + name + ",")
         }
     }
     

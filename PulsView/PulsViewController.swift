@@ -24,11 +24,7 @@ class PulsViewController: UIViewController{
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        let animation: CATransition = CATransition()
-        animation.duration = 1.0
-        animation.type = kCATransitionFade
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        labelPuls.layer.add(animation, forKey: "changeTextTransition")
+        
         
         self.updateUI()
         self.setupNotification()
@@ -59,6 +55,7 @@ class PulsViewController: UIViewController{
             
             
             DispatchQueue.main.async {
+                self.labelPuls.fadeTransition(0.5)
                 self.labelPuls.text = String(puls)
                 
                 self.imageHeart.image = UIImage.animatedImage(with: [
