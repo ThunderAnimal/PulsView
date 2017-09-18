@@ -4,6 +4,8 @@ platform :ios, '10.3'
 def common_pods
 	pod 'ActionSheetPicker-3.0'
 	pod 'RealmSwift'
+	pod 'Charts'
+	pod 'ChartsRealm'
 end
 
 target 'PulsView' do

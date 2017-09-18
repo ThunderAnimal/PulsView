@@ -1,5 +1,11 @@
 PODS:
   - ActionSheetPicker-3.0 (2.2.0)
+  - Charts (3.0.3):
+    - Charts/Core (= 3.0.3)
+  - Charts/Core (3.0.3)
+  - ChartsRealm (3.0.2):
+    - Charts (~> 3.0.2)
+    - RealmSwift (~> 2.4)
   - Realm (2.10.1):
     - Realm/Headers (= 2.10.1)
   - Realm/Headers (2.10.1)
@@ -8,13 +14,17 @@ PODS:
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
+  - Charts
+  - ChartsRealm
   - RealmSwift
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: 04179749fe0c127c657764ac473d04fa4d1af300
+  Charts: aca21cb331e86a3f789193d3682fd43afa9ac496
+  ChartsRealm: 642fc2600ce58817865362d468f32bbc1347c2d7
   Realm: 0b5534a14e717c84531bb3d27dac378b89875e22
   RealmSwift: 9a78252a5a41163fddb6f4e4e27d9418e214c8f6
 
-PODFILE CHECKSUM: 0c2dd6219d9ed0fd3b1048783d46b8814ddf0d7a
+PODFILE CHECKSUM: c07212fc48e7c1ca8a38948b86d3e4310a08f26c
 
 COCOAPODS: 1.3.1
