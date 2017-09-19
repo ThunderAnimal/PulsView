@@ -8,6 +8,7 @@
 
 import Foundation
 import WatchKit
+import AVFoundation
 
 class PulsViewInterfaceController: WKInterfaceController {
     
@@ -15,11 +16,56 @@ class PulsViewInterfaceController: WKInterfaceController {
     @IBOutlet var labelPuls: WKInterfaceLabel!
     @IBOutlet var btnOk: WKInterfaceButton!
     @IBOutlet var textLang: WKInterfaceLabel!
+    
+    private var playedAudio = false
 
     
     lazy var notificationCenter: NotificationCenter = {
         return NotificationCenter.default
     }()
+    
+    lazy var audioPlayer: AVAudioPlayerNode = {
+        return AVAudioPlayerNode()
+    }()
+    
+    lazy var audioEngine: AVAudioEngine = {
+        return AVAudioEngine()
+    }()
+    
+    
+    private func playAudio(){
+        guard !playedAudio else{
+            return
+        }
+        
+        audioEngine.attach(audioPlayer)
+            
+        let stereoFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2)
+        audioEngine.connect(audioPlayer, to: audioEngine.mainMixerNode, format: stereoFormat)
+            
+        do {
+            if !audioEngine.isRunning {
+                try audioEngine.start()
+            }
+        }catch{
+            print("ERROR - STATR AUDIOENGINE")
+        }
+        
+        if let path = Bundle.main.path(forResource: "28007129", ofType: "mp3") {
+            
+            let fileUrl = URL(fileURLWithPath: path)
+            
+            do {
+                let asset = try AVAudioFile(forReading: fileUrl)
+                
+                audioPlayer.scheduleFile(asset, at: nil, completionHandler: nil)
+                audioPlayer.play()
+                playedAudio = true
+            } catch {
+                print ("asset error")
+            }
+        }
+    }
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -153,6 +199,7 @@ class PulsViewInterfaceController: WKInterfaceController {
             fontSize = maxTextSize
             btnHeight = maxHeightBtn
             btnWidth = maxWidthBtn
+            self.playAudio()
         }
         self.textLang.setAttributedText(NSAttributedString(string: text, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: CGFloat(fontSize))]))
         self.btnOk.setHeight(CGFloat(btnHeight))
