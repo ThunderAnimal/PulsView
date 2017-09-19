@@ -20,20 +20,19 @@ class PulsMeasureHandler {
     
     public func startMeasure(){
         startMeasureTime = Date()
-        sendDataHelper.sendMeasureStateContext(measureState: true)
+        sendDataHelper.sendMeasureState(startMeasureTime: self.startMeasureTime!, measureState: true)
         
     }
     
     public func stopMeasure(){
+        sendDataHelper.sendMeasureState(startMeasureTime: self.startMeasureTime!, measureState: false)
         startMeasureTime = nil
-        sendDataHelper.sendMeasureStateContext(measureState: false)
     }
     
     public func newPulsData(puls: Int){
         
         NotificationCenter.default.post(name: NSNotification.Name(Constants.WatchNotification.newPulsData.key()), object: nil, userInfo: [Constants.Puls.value.key(): puls])
-        sendDataHelper.sendPulsDataContext(puls: puls)
-        sendDataHelper.sendPulsDataUserInfo(startMeasureTime: self.startMeasureTime!, measurePulsTime: Date(), puls: puls)
+        sendDataHelper.sendPulsData(startMeasureTime: self.startMeasureTime!, measurePulsTime: Date(), puls: puls)
     }
     
 }

@@ -79,6 +79,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             let pulsVvalue = userInfo[Constants.Puls.value.key()] as? Int{
             
             AppComponent.instance.getPulsDataHandle().addPuls(dateMeasure: measureStartTime, datePuls: pulsTime, value: pulsVvalue)
+            
+            let userDefaults = UserDefaults()
+            userDefaults.set(pulsVvalue, forKey: Constants.Puls.value.key())
+            userDefaults.set(pulsTime, forKey: Constants.Puls.pulsTime.key())
+            userDefaults.synchronize()
+            
+            NotificationCenter.default.post(name: NSNotification.Name(Constants.WatchNotification.newPulsData.key()), object: nil)
+        }
+        if let isMeasure = userInfo[Constants.Puls.isMeasure.key()] as? Bool,
+            let measureStartTime = userInfo[Constants.Puls.measureStartTime.key()] as? Date{
+            let userDefaults  = UserDefaults()
+            userDefaults.set(measureStartTime, forKey: Constants.Puls.measureStartTime.key())
+            userDefaults.set(isMeasure, forKey: Constants.Puls.isMeasure.key())
+            userDefaults.synchronize()
+            
+            NotificationCenter.default.post(name: NSNotification.Name(Constants.WatchNotification.changeMeasureState.key()), object: nil)
         }
     }
     
@@ -94,21 +110,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         
-        if let isMeasure = applicationContext[Constants.Puls.isMeasure.key()] as? Bool{
-            let userDefaults  = UserDefaults()
-            userDefaults.set(isMeasure, forKey: Constants.Puls.isMeasure.key())
-            userDefaults.synchronize()
-            
-            NotificationCenter.default.post(name: NSNotification.Name(Constants.WatchNotification.changeMeasureState.key()), object: nil)
-        }
-        
-        if let puls = applicationContext[Constants.Puls.value.key()] as? Int{
-            let userDefaults = UserDefaults()
-            userDefaults.set(puls, forKey: Constants.Puls.value.key())
-            userDefaults.synchronize()
-            
-            NotificationCenter.default.post(name: NSNotification.Name(Constants.WatchNotification.newPulsData.key()), object: nil)
-        }
     }
     
     func session(_ session: WCSession,
