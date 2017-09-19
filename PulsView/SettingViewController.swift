@@ -8,11 +8,13 @@
 
 import Foundation
 import UIKit
+import ActionSheetPicker_3_0
 
 class SettingViewController: UITableViewController{
     
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputLastname: UITextField!
+    @IBOutlet weak var labelBirthday: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,10 @@ class SettingViewController: UITableViewController{
                 inputName.becomeFirstResponder()
             }else if(index.row == 1){ //Lastname
                 inputLastname.becomeFirstResponder()
+            }else if(index.row == 2){ //Birthday
+                self.dismissKeyboard()
+                self.showDatePicker(sender: tableView, indexPath: indexPath)
+                
             }
         }
     }
@@ -57,11 +63,43 @@ class SettingViewController: UITableViewController{
         sendNameToWatch()
     }
     
+    private func showDatePicker(sender: UITableView, indexPath: IndexPath){
+        let shareDefault = UserDefaults(suiteName: Constants.AppGroups.person_name.key())
+        
+        let date = shareDefault?.value(forKey: Constants.Person.birthday.key()) as? Date ?? Date()
+        
+        
+        let datePicker = ActionSheetDatePicker(title: "Birthday", datePickerMode: UIDatePickerMode.date, selectedDate:  date, doneBlock: {
+            picker, value, index in
+            
+            shareDefault?.set(value as? Date, forKey: Constants.Person.birthday.key())
+            self.updateUI()
+            sender.deselectRow(at: indexPath, animated: true)
+            return
+        }, cancel: { ActionStringCancelBlock in
+            sender.deselectRow(at: indexPath, animated: true)
+            return
+        }, origin: sender.superview!.superview)
+        
+        datePicker?.maximumDate = Date()
+        datePicker?.toolbarButtonsColor = AppColor().primaryColor
+        datePicker?.show()
+    }
+    
     private func updateUI(){
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "dd.MM.yyyy"
+        
         let shareDefaults = UserDefaults(suiteName: Constants.AppGroups.person_name.key())
         
         inputName.text = shareDefaults?.string(forKey: Constants.Person.name.key())
         inputLastname.text = shareDefaults?.string(forKey: Constants.Person.last_name.key())
+        
+        if let date = shareDefaults?.value(forKey: Constants.Person.birthday.key()) as? Date {
+            labelBirthday.text = dateFormat.string(from: date)
+        }else{
+            labelBirthday.text = "--.--.----"
+        }
     }
     
     

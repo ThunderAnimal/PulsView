@@ -38,7 +38,7 @@ public enum Constants{
     }
     
     public enum Person: Int {
-        case name, last_name
+        case name, last_name, birthday
         
         public func key() -> String{
             switch self {
@@ -46,6 +46,8 @@ public enum Constants{
                 return "NAME"
             case .last_name:
                 return "LAST_NAME"
+            case .birthday:
+                return "BIRTHDAY"
             }
         }
     }
