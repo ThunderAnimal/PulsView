@@ -51,6 +51,7 @@
 		38DF6C481F6F11F4001F1AB3 /* HistorieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF6C471F6F11F4001F1AB3 /* HistorieViewController.swift */; };
 		38DF6C4A1F6F1403001F1AB3 /* HistorieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF6C491F6F1403001F1AB3 /* HistorieDetailViewController.swift */; };
 		38DF6C4C1F6F161B001F1AB3 /* PulsMeasureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF6C4B1F6F161B001F1AB3 /* PulsMeasureHandler.swift */; };
+		38DF6C501F716E76001F1AB3 /* ChartHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF6C4F1F716E76001F1AB3 /* ChartHelper.swift */; };
 		A8E4F56EC2F2C17EA7B0A783 /* Pods_PulsView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2874991888479108BF2E90 /* Pods_PulsView.framework */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +148,7 @@
 		38DF6C471F6F11F4001F1AB3 /* HistorieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorieViewController.swift; sourceTree = "<group>"; };
 		38DF6C491F6F1403001F1AB3 /* HistorieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorieDetailViewController.swift; sourceTree = "<group>"; };
 		38DF6C4B1F6F161B001F1AB3 /* PulsMeasureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsMeasureHandler.swift; sourceTree = "<group>"; };
+		38DF6C4F1F716E76001F1AB3 /* ChartHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartHelper.swift; sourceTree = "<group>"; };
 		BA98C83F1217306AD6F0901C /* Pods-PulsView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PulsView.release.xcconfig"; path = "Pods/Target Support Files/Pods-PulsView/Pods-PulsView.release.xcconfig"; sourceTree = "<group>"; };
 		BE2874991888479108BF2E90 /* Pods_PulsView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PulsView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDDD617E1E991EB50ADFFF08 /* Pods-PulsView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PulsView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PulsView/Pods-PulsView.debug.xcconfig"; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				38DB7BC31F31D4A300A04A40 /* convCGValues.swift */,
 				38DB7BB91F31D43300A04A40 /* UIExtansions.swift */,
 				38512C6A1F5F2EA100E123A5 /* Constants.swift */,
+				38DF6C4F1F716E76001F1AB3 /* ChartHelper.swift */,
 			);
 			name = support;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				38DF6C4A1F6F1403001F1AB3 /* HistorieDetailViewController.swift in Sources */,
 				38DB7BBC1F31D44300A04A40 /* StartViewController.swift in Sources */,
 				38512C6F1F5F300700E123A5 /* SettingViewController.swift in Sources */,
+				38DF6C501F716E76001F1AB3 /* ChartHelper.swift in Sources */,
 				38DB7BBE1F31D47300A04A40 /* HealthController.swift in Sources */,
 				38DB7BC01F31D48300A04A40 /* AppComponent.swift in Sources */,
 				38DF6C461F6B28B1001F1AB3 /* PulsDataMeasureEntity.swift in Sources */,

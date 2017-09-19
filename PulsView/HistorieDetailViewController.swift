@@ -9,12 +9,15 @@
 import Foundation
 import UIKit
 import Charts
+import Realm
+import RealmSwift
 
-
-class HistorieDetailViewController: UIViewController {
+class HistorieDetailViewController: UIViewController, ChartViewDelegate {
     
     var pulsDataMeasure: PulsDataMeasureEntity?
     
+    @IBOutlet weak var labelPuls: UILabel!
+    @IBOutlet weak var labelPulsTime: UILabel!
     @IBOutlet weak var lineChartViewPuls: LineChartView!
     
     override func viewDidLoad() {
@@ -23,9 +26,13 @@ class HistorieDetailViewController: UIViewController {
         
         self.navigationItem.setTitle(title: "Detail", subtitle: (pulsDataMeasure?.dateStr)! + " " + (pulsDataMeasure?.timeStr)!)
         
-        self.setUpLineChart()
-        self.setData()
+        let chartHelper = ChartHelper()
+        self.lineChartViewPuls = chartHelper.setUpLineChart(lineChartView: self.lineChartViewPuls)
         
+        self.lineChartViewPuls.leftAxis.axisMinimum = 20
+        self.lineChartViewPuls.leftAxis.axisMaximum = 180
+        
+        self.lineChartViewPuls.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,71 +41,44 @@ class HistorieDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-         self.lineChartViewPuls.animate(xAxisDuration: 0.3, yAxisDuration: 1.0)
+        self.setData()
+        self.lineChartViewPuls.animate(xAxisDuration: 0.3, yAxisDuration: 1.0)
     }
+    
     
     public func setDetailData (pulsDataMeasure: PulsDataMeasureEntity){
         self.pulsDataMeasure = pulsDataMeasure
     }
     
-    private func setUpLineChart(){
-        let myAppColor = AppColor()
-        lineChartViewPuls.chartDescription?.text = ""
-        lineChartViewPuls.noDataTextColor = myAppColor.textColorDark
-        lineChartViewPuls.tintColor = myAppColor.primaryColor
-        
-        lineChartViewPuls.dragEnabled = true
-        lineChartViewPuls.setScaleEnabled(false)
-        
-        
-        lineChartViewPuls.xAxis.drawLabelsEnabled = false
-        lineChartViewPuls.xAxis.drawAxisLineEnabled = false
-        lineChartViewPuls.xAxis.drawGridLinesEnabled = false
-        
-        lineChartViewPuls.leftAxis.axisMinimum = 15
-        lineChartViewPuls.leftAxis.axisMaximum = 145
-        
-        lineChartViewPuls.rightAxis.enabled = false
-        
-        let chartLimitTop: ChartLimitLine = ChartLimitLine(limit: 80)
-        let chartLimitBottom: ChartLimitLine = ChartLimitLine(limit: 60)
-        
-        lineChartViewPuls.leftAxis.addLimitLine(chartLimitTop)
-        lineChartViewPuls.leftAxis.addLimitLine(chartLimitBottom)
-    }
     private func setData(){
+        let chartHelper = ChartHelper()
         
         let pulsData = self.pulsDataMeasure!.pulsData
         let pulsSeries = pulsData.map { puls in
-            return ChartDataEntry(x: Double(puls.date.timeIntervalSince1970), y: Double(puls.value))
+            return ChartDataEntry(x: Double(puls.date.timeIntervalSince1970) - Double((pulsDataMeasure?.date.timeIntervalSince1970)!), y: Double(puls.value))
         } as [ChartDataEntry]
         
         let chartData = LineChartData()
-        let chartDataset = self.createLineChartDataset(pulsSeries: pulsSeries)
+        let chartDataset = chartHelper.createLineChartDataset(pulsSeries: pulsSeries)
         
         chartData.addDataSet(chartDataset)
         self.lineChartViewPuls.data = chartData
         
+
+        self.lineChartViewPuls.setVisibleXRangeMaximum(59) //59 seconds
+        self.lineChartViewPuls.moveViewToX(0)
         self.lineChartViewPuls.notifyDataSetChanged()
     }
     
-    private func createLineChartDataset(pulsSeries: [ChartDataEntry]) -> LineChartDataSet{
-        let charDataSet: LineChartDataSet = LineChartDataSet(values: pulsSeries, label: "Puls")
-        charDataSet.axisDependency = .left
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "mm:ss"
         
-        let myAppColor = AppColor()
-        let gradientColors = [myAppColor.primaryColor.cgColor, myAppColor.primaryColorBg.cgColor] as CFArray
-        let colorLocations:[CGFloat] = [1.0, 0.0]
-        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) // GradientObject
-        charDataSet.setColor(myAppColor.primaryColor)
-        charDataSet.setCircleColor(myAppColor.primaryColorDark)
-        charDataSet.fill = Fill.fillWithLinearGradient(gradient!, angle: 90.0) // Set the Gradient
-        charDataSet.drawFilledEnabled = true
+        self.labelPuls.fadeTransition(0.5)
+        self.labelPuls.text = String(entry.y)
         
-        charDataSet.lineWidth = 2.0
-        charDataSet.circleRadius = 2.5
-        charDataSet.drawValuesEnabled = false
+        self.labelPulsTime.fadeTransition(0.5)
+        self.labelPulsTime.text = "Zeitpunkt: " + dateFormat.string(from: Date(timeIntervalSince1970: entry.x))
         
-        return charDataSet
     }
 }
